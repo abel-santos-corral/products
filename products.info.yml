@@ -13,3 +13,4 @@ dependencies:
   - user
   - views
 version: 8.x-1.0
+package: 'Marketplace'

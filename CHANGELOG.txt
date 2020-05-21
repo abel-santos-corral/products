@@ -1,0 +1,6 @@
+
+Products 8.x-1.0, 2020-05-21
+----------------------------
+- (abel-santos) - 5/21/2020 - Initial Release of this document.
+                              Improve info.yml.
+                              Add README.md.
