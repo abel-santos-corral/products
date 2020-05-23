@@ -33,6 +33,18 @@ If the module has sub-modules, add them here.
 * Install as you would normally install a coustom Drupal module.
  See: https://www.drupal.org/node/895232 for further information.
 
+ * Go to products root folder and tape:
+
+ > composer install
+
+ * Check that composer installs dependency of _madmurphy/cookies_
+
+### DEPENDENCIES
+
+ * This module uses a third party library to manage cookies.js at:
+
+ > [cookies.js](https://github.com/madmurphy/cookies.js)
+
 ### Dependencies
 
 * See [products.info.yml](cnfig/products.info.yml). Part of the structure has been packaged via features module.
@@ -79,7 +91,7 @@ If linked to a given use case, add a marked related to the use case.
 
 * Purpose: Display to provide a page with a single product.
 
-* Functionality: This view shows a product with its details. 
+* Functionality: This view shows a product with its details.
 
 ## BLOCKS
 

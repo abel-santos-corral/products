@@ -1,0 +1,3 @@
+# Ignore vendor components
+vendor/*
+composer.lock

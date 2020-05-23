@@ -1,0 +1,31 @@
+{
+    "name": "drupal/products",
+    "type": "drupal-module",
+    "description": "Módulo para gestión de productos",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/products",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/products",
+        "source": "http://cgit.drupalcode.org/products"
+    },
+    "repositories": [
+      {
+        "type": "package",
+        "package": {
+            "name": "madmurphy/cookies",
+            "version": "v1.0",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://github.com/madmurphy/cookies.js/archive/master.zip",
+                "type": "zip"
+            }
+
+        }
+      }
+    ],
+    "require": {
+        "madmurphy/cookies": "*"
+    }
+}
