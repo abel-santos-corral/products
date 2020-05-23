@@ -1,0 +1,7 @@
+products_cookies:
+  version: VERSION
+  js:
+    vendor/madmurphycookies/cookies.min.js: {}
+  css:
+    theme:
+      css/products.css: {}
