@@ -1,0 +1,29 @@
+input.product-checkbox {
+  display: none;
+}
+
+label.label-product {
+  background: gold;
+  margin-left: 0px;
+}
+
+label.label-product:hover {
+  background-color: goldenrod;
+  margin-left: 0px;
+}
+
+div.views-view-grid {
+  padding: 20px;
+}
+
+label.remove-product {
+  background: steelblue;
+  color: white;
+  margin-left: 0px;
+}
+
+label.remove-product:hover {
+  background-color: slateblue;
+  color: white;
+  margin-left: 0px;
+}

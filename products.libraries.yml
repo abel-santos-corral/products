@@ -1,7 +1,11 @@
 products_cookies:
   version: VERSION
+  dependencies:
+    - core/drupal
+    - core/jquery
   js:
     vendor/madmurphycookies/cookies.min.js: {}
+    js/products.js: {}
   css:
     theme:
       css/products.css: {}

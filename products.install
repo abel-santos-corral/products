@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * This update executes a reinstall of Products module
+ */
+function products_update_8001() {
+  $modules = [
+    'products',
+  ];
+  \Drupal::service('module_installer')->install($modules);
+  drupal_set_message('Module products reinstalled.');
+}
