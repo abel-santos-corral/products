@@ -1,0 +1,15 @@
+products.cart_form:
+  path: '/products/cart'
+  defaults:
+    _form: '\Drupal\products\Form\CartForm'
+    _title: 'CartForm'
+  requirements:
+    _access: 'TRUE'
+
+products.cart_controller_checkout:
+  path: '/products/checkout'
+  defaults:
+    _controller: '\Drupal\products\Controller\CartController::checkout'
+    _title: 'Checkout'
+  requirements:
+    _permission: 'access content'

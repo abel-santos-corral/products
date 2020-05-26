@@ -1,0 +1,13 @@
+services:
+  logger.channel.products:
+    parent: logger.channel_base
+    arguments: ['products']
+  products.cookie:
+    class: Drupal\products\Services\CookieService
+    arguments: []
+  logger.channel.products:
+    parent: logger.channel_base
+    arguments: ['products']
+  products.currency:
+    class: Drupal\products\Services\CurrencyService
+    arguments: []

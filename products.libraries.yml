@@ -3,8 +3,9 @@ products_cookies:
   dependencies:
     - core/drupal
     - core/jquery
+    - core/jquery.once
   js:
-    vendor/madmurphycookies/cookies.min.js: {}
+    vendor/js-cookie/js-cookie/src/js.cookie.js: {}
     js/products.js: {}
   css:
     theme:

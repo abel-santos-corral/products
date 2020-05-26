@@ -14,11 +14,11 @@
       {
         "type": "package",
         "package": {
-            "name": "madmurphy/cookies",
+            "name": "js-cookie/js-cookie",
             "version": "v1.0",
             "type": "drupal-library",
             "dist": {
-                "url": "https://github.com/madmurphy/cookies.js/archive/master.zip",
+                "url": "https://github.com/js-cookie/js-cookie/archive/latest.zip",
                 "type": "zip"
             }
 
@@ -26,6 +26,6 @@
       }
     ],
     "require": {
-        "madmurphy/cookies": "*"
+        "js-cookie/js-cookie": "*"
     }
 }

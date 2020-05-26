@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de1184d067873d3fe7b4d26003f47774",
+    "content-hash": "4c20ff01906bbd1361508df6f8a6d817",
     "packages": [
         {
-            "name": "madmurphy/cookies",
+            "name": "js-cookie/js-cookie",
             "version": "v1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/madmurphy/cookies.js/archive/master.zip"
+                "url": "https://github.com/js-cookie/js-cookie/archive/latest.zip"
             },
             "type": "drupal-library"
         }
