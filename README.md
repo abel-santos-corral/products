@@ -37,13 +37,13 @@ If the module has sub-modules, add them here.
 
  > composer install
 
- * Check that composer installs dependency of _madmurphy/cookies_
+ * Check that composer installs dependency of _js-cookie/js-cookie_
 
 ### DEPENDENCIES
 
- * This module uses a third party library to manage cookies.js at:
+ * This module uses a third party library to manage js-cookies.js at:
 
- > [cookies.js](https://github.com/madmurphy/cookies.js)
+ > [js-cookie](https://github.com/js-cookie/js-cookie/archive/latest.zip)
 
 ### Dependencies
 
@@ -100,7 +100,27 @@ If linked to a given use case, add a marked related to the use case.
 
 ## TESTING
 
-Add a basic list of tests that are performed on this module.
+In the early stage of development of the module, test should be performed manually.
+
+After installation follow the instructions:
+
+* Install devel vía composer:
+
+> composer require 'drupal/devel:^2.1'
+
+* Generate 10 nodes of type product vía drupal console:
+
+> drupal create:nodes product --limit="10"   --title-words="3"   --time-range="1"   --language="en"
+
+* Go to products page.
+
+> http://localhost:88/marketplace/products
+
+* Select several products.
+
+* Go to cart page (which is under development).
+
+> http://localhost:88/marketplace/products/cart
 
 ## FURTHER READING
 
