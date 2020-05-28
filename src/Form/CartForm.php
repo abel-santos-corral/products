@@ -7,6 +7,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
 
 /**
  * Class CartForm.
@@ -28,6 +30,7 @@ class CartForm extends FormBase {
     $products = \Drupal::service('products.cookie')->getCookie('products');
     // When products are retrieved, process them.
     if ($products) {
+      drupal_set_message(time() - " - Build form" . json_encode($products));
       // Rearrange the products array.
       foreach ($products as $product) {
         $productId = str_replace('check-product-', '', $product);
@@ -40,11 +43,15 @@ class CartForm extends FormBase {
         // Container of product.
         $form['product-' . $productId] = [
           '#type' => 'container',
-          '#prefix' => '<div class="product-unit">',
-          '#suffix' => '</div>',
+          // '#prefix' => '<div class="product-unit">',
+          // '#suffix' => '</div>',
+          '#attributes' => [
+            'id' => 'product-' . $productId,
+            'class' => 'product-unit',
+          ],
         ];
         // Label of product.
-        $form['product-' . $productId]['label' . $productId] = [
+        $form['product-' . $productId]['label-' . $productId] = [
           '#type' => 'label',
           '#title' => $titleNode,
           '#prefix' => '<h2 class="product-title">',
@@ -56,23 +63,43 @@ class CartForm extends FormBase {
           $priceLine = $priceLine . " | Offer price : " . $priceOfferNode
           . "€ from " . $unitOfferNode . " unit(s)";
         }
-        $form['product-' . $productId]['price' . $productId] = [
+        $form['product-' . $productId]['price-' . $productId] = [
           '#type' => 'label',
           '#title' => $priceLine,
         ];
-        $form['product-' . $productId]['number_items' . $productId] = [
+        $form['product-' . $productId]['number_items-' . $productId] = [
           '#type' => 'number',
           '#title' => $this->t('Number of Items'),
           '#default_value' => '1',
-          '#min' => 0,
+          '#min' => 1,
           '#max' => 50,
           '#step' => 1,
         ];
-        $form['product-' . $productId]['product-data' . $productId] = array(
-          '#type' => 'hidden',
-          '#required' => TRUE,
-          '#value' => $productArray,
-        );
+        $form['product-' . $productId]['eliminate-' . $productId] = [
+          '#type' => 'button',
+          '#value' => $this->t('Eliminate Product'),
+          '#attributes' => [
+            'class' => [
+              'use-ajax',
+              'button--primary',
+            ],
+          ],
+          '#name' => 'eliminate-' . $productId,
+          '#ajax' => [
+            'callback' => [$this, 'eliminateProduct'],
+            'event' => 'click',
+            'progress' => [
+              'type' => 'throbber',
+              'message' => $this->t('...Planning'),
+            ],
+            'wrapper' => 'product-' . $productId,
+          ],
+        ];
+        // $form['product-' . $productId]['product-data-' . $productId] = [
+        //   '#type' => 'hidden',
+        //   '#required' => TRUE,
+        //   '#value' => $productArray,
+        // ];
       }
     }
     else {
@@ -108,6 +135,46 @@ class CartForm extends FormBase {
     foreach ($form_state->getValues() as $key => $value) {
       \Drupal::messenger()->addMessage($key . ': ' . ($key === 'text_format'?$value['value']:$value));
     }
+  }
+
+  /**
+   * Eliminate a product from cart.
+   *
+   * @return \Drupal\Core\Ajax\AjaxResponse
+   *   Response with form's values emptied.
+   */
+  public function eliminateProduct(array &$form, FormStateInterface &$form_state) {
+    $response = new AjaxResponse();
+    $triggeredElement = $form_state->getTriggeringElement();
+    $htmlTriggeredElement = $triggeredElement['#attributes']['data-drupal-selector'];
+    $idTriggeredElement = str_replace("edit-eliminate-", "product-", $htmlTriggeredElement);
+    // If there are any form errors, re-display the form.
+    if ($form_state->hasAnyErrors()) {
+      $response->addCommand(new ReplaceCommand('#' . $idTriggeredElement, $form));
+    }
+    else {
+      // Call service to obtain the products from cookie
+      $products = \Drupal::service('products.cookie')->getCookie('products');
+      drupal_set_message(time() - " - " . json_encode($products));
+      $productToEliminate = str_replace("edit-eliminate-", "check-product-", $htmlTriggeredElement);
+      drupal_set_message(time() . " - " . $productToEliminate);
+      $products = array_unique($products);
+      if (in_array($productToEliminate, $products)) {
+        // array_diff($products, $productToEliminate);
+        drupal_set_message(time() . " - Borra - " . json_encode($products));
+        $productsClean = [];
+        foreach($products as $producto) {
+          if ($producto != $productToEliminate) {
+            array_push($productsClean, $producto);
+          }
+        }
+        drupal_set_message(time() . " - Borra - " . json_encode($productsClean));
+      }
+      // Remove element.
+      \Drupal::service('products.cookie')->setCookie('products', json_encode($productsClean));
+      $response->addCommand(new ReplaceCommand('#' . $idTriggeredElement, ""));
+    }
+    return $response;
   }
 
 }
