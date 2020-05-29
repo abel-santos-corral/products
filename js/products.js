@@ -22,7 +22,6 @@
         }
       });
       $(document).ready(function(){
-        alert("estoy!");
         var cookieProducts = null, cookies = null;
         var products = null;
         cookies = Cookies.get('products');
