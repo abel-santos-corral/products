@@ -155,13 +155,13 @@ class CartForm extends FormBase {
     else {
       // Call service to obtain the products from cookie
       $products = \Drupal::service('products.cookie')->getCookie('products');
-      drupal_set_message(time() - " - " . json_encode($products));
+      // drupal_set_message(time() - " - " . json_encode($products));
       $productToEliminate = str_replace("edit-eliminate-", "check-product-", $htmlTriggeredElement);
-      drupal_set_message(time() . " - " . $productToEliminate);
+      // drupal_set_message(time() . " - " . $productToEliminate);
       $products = array_unique($products);
       if (in_array($productToEliminate, $products)) {
         // array_diff($products, $productToEliminate);
-        drupal_set_message(time() . " - Borra - " . json_encode($products));
+        // drupal_set_message(time() . " - Borra - " . json_encode($products));
         $productsClean = [];
         foreach($products as $producto) {
           if ($producto != $productToEliminate) {
@@ -171,7 +171,7 @@ class CartForm extends FormBase {
         drupal_set_message(time() . " - Borra - " . json_encode($productsClean));
       }
       // Remove element.
-      \Drupal::service('products.cookie')->setCookie('products', json_encode($productsClean));
+      \Drupal::service('products.cookie')->setCookie('products', $productsClean);
       $response->addCommand(new ReplaceCommand('#' . $idTriggeredElement, ""));
     }
     return $response;

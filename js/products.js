@@ -25,18 +25,20 @@
   }
 
   function addCookies(nid) {
-    var cookieProducts = null, cookies = null;
+    var cookieProducts = null;
+    var cookies = null;
     cookies = Cookies.get('products');
     if (cookies === undefined) {
       cookieProducts = new Array(nid);
-      var json_str = JSON.stringify(cookieProducts);
-      Cookies.set('products', json_str);
+      Cookies.set('products', cookieProducts.join(","));
     }
     else {
-      cookieProducts = JSON.parse(cookies);
-      cookieProducts.push(nid);
-      var json_str = JSON.stringify(cookieProducts);
-      Cookies.set('products', json_str);
+      cookieProducts = cookies.split(",");
+      if(cookieProducts.indexOf(nid) == -1){
+        // Avoids adding duplicated values.
+          cookieProducts.push(nid);
+      }
+      Cookies.set('products', cookieProducts.join(","));
     }
   }
 
@@ -47,7 +49,7 @@
       Cookies.remove('products');
     }
     else {
-      cookieProducts = JSON.parse(cookies);
+      cookieProducts = cookies.split(",");
       var i = 0;
       while (i < cookieProducts.length) {
         if(cookieProducts[i] === nid) {
@@ -60,8 +62,7 @@
         Cookies.remove('products');
       }
       else {
-        var json_str = JSON.stringify(cookieProducts);
-        Cookies.set('products', json_str);
+        Cookies.set('products', cookieProducts.join(","));
       }
     }
   }

@@ -18,22 +18,13 @@ interface CookieServiceInterface {
    */
    public function getCookie(string $name);
 
-   /**
-    * Removes the cookie with a given name.
-    *
-    * @param string $name
-    *   String containing the name of the cookie.
-    *
-    */
-    public function removeCookie(string $name);
-
     /**
      * Sets the cookie with a given name and a given content.
      *
      * @param string $name
      *   String containing the name of the cookie.
-     * @param string $jsonProducts
-     *   String containing the json with products.
+     * @param array $arrayProducts
+     *   Array containing a list with products.
      *
      * @return boolean
      *   Return boolean containing the result of the operation.
@@ -41,6 +32,6 @@ interface CookieServiceInterface {
      *       0 - KO
      *       1 - OK
      */
-     public function setCookie(string $name, string $jsonProducts = NULL);
+     public function setCookie(string $name, array $arrayProducts = NULL);
 
 }
