@@ -21,12 +21,26 @@
           removeCookies(elementId);
         }
       });
+      $(document).ready(function(){
+        alert("estoy!");
+        var cookieProducts = null, cookies = null;
+        var products = null;
+        cookies = Cookies.get('products');
+        if (cookies !== undefined) {
+          cookieProducts = cookies.split(",");
+          $("[for^='check-product']").each(function( index ) {
+            if (cookieProducts.includes( $(this).attr("for") )) {
+              $(this).html("Remove from cart");
+              $(this).addClass("remove-product");
+            }
+          });
+        }
+      });
     }
   }
 
   function addCookies(nid) {
-    var cookieProducts = null;
-    var cookies = null;
+    var cookieProducts = null, cookies = null;
     cookies = Cookies.get('products');
     if (cookies === undefined) {
       cookieProducts = new Array(nid);

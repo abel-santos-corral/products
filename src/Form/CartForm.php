@@ -30,7 +30,6 @@ class CartForm extends FormBase {
     $products = \Drupal::service('products.cookie')->getCookie('products');
     // When products are retrieved, process them.
     if ($products) {
-      drupal_set_message(time() - " - Build form" . json_encode($products));
       // Rearrange the products array.
       foreach ($products as $product) {
         $productId = str_replace('check-product-', '', $product);
@@ -43,8 +42,6 @@ class CartForm extends FormBase {
         // Container of product.
         $form['product-' . $productId] = [
           '#type' => 'container',
-          // '#prefix' => '<div class="product-unit">',
-          // '#suffix' => '</div>',
           '#attributes' => [
             'id' => 'product-' . $productId,
             'class' => 'product-unit',
@@ -155,20 +152,15 @@ class CartForm extends FormBase {
     else {
       // Call service to obtain the products from cookie
       $products = \Drupal::service('products.cookie')->getCookie('products');
-      // drupal_set_message(time() - " - " . json_encode($products));
       $productToEliminate = str_replace("edit-eliminate-", "check-product-", $htmlTriggeredElement);
-      // drupal_set_message(time() . " - " . $productToEliminate);
       $products = array_unique($products);
       if (in_array($productToEliminate, $products)) {
-        // array_diff($products, $productToEliminate);
-        // drupal_set_message(time() . " - Borra - " . json_encode($products));
         $productsClean = [];
         foreach($products as $producto) {
           if ($producto != $productToEliminate) {
             array_push($productsClean, $producto);
           }
         }
-        drupal_set_message(time() . " - Borra - " . json_encode($productsClean));
       }
       // Remove element.
       \Drupal::service('products.cookie')->setCookie('products', $productsClean);

@@ -29,7 +29,7 @@ class CookieService implements CookieServiceInterface {
     $hasCookie = \Drupal::request()->cookies->has($name);
     if ($hasCookie) {
       $cookie = \Drupal::request()->cookies->get($name);
-      return split(",", $cookie));
+      return explode(",", $cookie);
     }
     else {
       return FALSE;
@@ -43,7 +43,7 @@ class CookieService implements CookieServiceInterface {
       \Drupal::logger('products')->error($this->t('Field name is not correct. Please check!'));
       return FALSE;
     }
-    if (is_null($jsonProducts)) {
+    if (is_null($arrayProducts)) {
       \Drupal::logger('products')->error(t('Field jsonProducts is not correct. Please check!'));
       return FALSE;
     }
