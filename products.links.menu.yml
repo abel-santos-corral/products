@@ -1,0 +1,6 @@
+products.marketplace_config_form:
+  title: 'Marketplace'
+  route_name: products.marketplace_config_form
+  description: 'Configuration for the marketplace'
+  parent: system.admin_config_system
+  weight: 99

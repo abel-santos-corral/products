@@ -6,7 +6,13 @@ Products 8.x-1.0, 2020-05-21
                               Add README.md.
 - (abel-santos) - 5/23/2020 - Add plugin views field to manage checkbox field
                               for products.
-                              Add dependency to external library of js.cookie.js.
+                              Add dependency to external library of js.cookie.js
 - (abel-santos) - 5/23/2020 - Add products.js to manage add-remove behaviour.
-                              Add products.css to show buttons add-remove products.
+                              Add products.css to show buttons add-remove pro-
+                              ducts.
 - (abel-santos) - 5/25/2020 - Add javascript behaviour: addCookies and removeCookies.
+- (abel-santos) - 5/30/2020 - Add configuration form for products general confi-
+                              guration.
+                              Add in configuration form a section for cart block.
+                              Add cart block that shows cart resumé and button
+                              to proceed to checkout.

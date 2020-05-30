@@ -10,3 +10,8 @@ products_cookies:
   css:
     theme:
       css/products.css: {}
+products_block_styles:
+  version: VERSION
+  css:
+    theme:
+      css/products_block_styles.css: {}

@@ -1,0 +1,15 @@
+products:
+  button_proceed: "Proceed to checkout"
+  maximum_number_items: 50
+  maximum_number_products: 10
+cart-block:
+  img:
+    class: 'img-checkout-block'
+    src: 'modules/custom/products/img/icon/cart.png'
+    alt: 'Shopping cart'
+    height: '40px'
+    width: '40px'
+  button:
+    class: "button,buton-action,button--primary,button--small"
+    text: 'Proceed to checkout'
+    href: 'products/cart'

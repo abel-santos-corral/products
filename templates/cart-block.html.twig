@@ -1,0 +1,17 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set classes = [
+    'clear-both',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  <img id="img-checkout-block" class="{{ img.class }}" src="{{ img.src }}" alt="{{ img.alt }}" height="{{ img.height }}" width="{{ img.width }}">
+  <button id="button-checkout-block" class="{{ button.class }}" type="button" onclick="location.href='{{ button.href }}' ">{{ button.text }}</button>
+</div>

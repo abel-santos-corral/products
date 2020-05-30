@@ -3,7 +3,7 @@
 /**
  * This update executes a reinstall of Products module
  */
-function products_update_8011() {
+function products_update_8012() {
   $modules = [
     'products',
   ];

@@ -1,0 +1,20 @@
+div.products-block-container,
+div.cart-block-container {
+  padding-top:10px;
+  padding-bottom:10px;
+  border-style:solid;
+  border-width:1px;
+  padding:10px;
+  margin-top:5px;
+  border-radius:5px;
+  background-color:#d9edf7
+}
+
+label.main-label {
+  font-size: 1.5em;
+  color: MidnightBlue;
+}
+
+div.marginado {
+  margin-left: 20px;
+}
