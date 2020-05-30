@@ -9,9 +9,9 @@
 */
 #}
 {% set classes = [
-    'clear-both',
+    'clear-both cart-block',
 ] %}
 <div{{ attributes.addClass(classes) }}>
-  <img id="img-checkout-block" class="{{ img.class }}" src="{{ img.src }}" alt="{{ img.alt }}" height="{{ img.height }}" width="{{ img.width }}">
+  <span id="span-checkout-block"><img id="img-checkout-block" class="{{ img.class }}" src="{{ img.src }}" alt="{{ img.alt }}" height="{{ img.height }}" width="{{ img.width }}"></span>
   <button id="button-checkout-block" class="{{ button.class }}" type="button" onclick="location.href='{{ button.href }}' ">{{ button.text }}</button>
 </div>

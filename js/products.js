@@ -1,11 +1,22 @@
 (function($, Drupal) {
+  var numberProductsSelected =0;
+
   Drupal.behaviors.cart = {
     attach: function(context, settings) {
       // This will only get ran once
       $("[for^='check-product']").once("cart").click(function() {
+        // Get number of elments in cookie to update number of products selected.
+        var cookies = Cookies.get('products');
+        if (cookies !== undefined) {
+          var cookieProducts = cookies.split(",");
+          if (cookieProducts.length > 0) {
+            numberProductsSelected = cookieProducts.length;
+          }
+        }
         // Get the id of the label of product clicked.
         var elementId = $(this).attr("for");
         if ($(this).html() == "Add to cart") {
+          numberProductsSelected = numberProductsSelected + 1;
           // If the product has not been already added to cart.
           $(this).html("Remove from cart");
           $(this).addClass("remove-product");
@@ -13,12 +24,21 @@
           $('#' + elementId).attr('checked', true);
           addCookies(elementId);
         } else {
+          numberProductsSelected = numberProductsSelected - 1;
           // If the product is going to be removed from cart.
           $(this).html("Add to cart");
           $(this).removeClass("remove-product");
           // Uncheck the product.
           $('#' + elementId).attr('checked', false);
           removeCookies(elementId);
+        }
+        if (numberProductsSelected > 0) {
+          $('button#button-checkout-block').removeClass("button-hidden");
+          $('#span-checkout-block').attr('data-content',numberProductsSelected);
+        }
+        else {
+          $('button#button-checkout-block').addClass("button-hidden");
+          $('#span-checkout-block').attr('data-content',"");
         }
       });
       $(document).ready(function(){
@@ -31,8 +51,19 @@
             if (cookieProducts.includes( $(this).attr("for") )) {
               $(this).html("Remove from cart");
               $(this).addClass("remove-product");
+              // numberProductsSelected = numberProductsSelected + 1;
+            }
+            if (cookieProducts.length > 0) {
+              $('button#button-checkout-block').removeClass("button-hidden");
+              $('#span-checkout-block').attr('data-content', cookieProducts.length);
+            }
+            else {
+              $('button#button-checkout-block').addClass("button-hidden");
             }
           });
+          // if (cookieProducts.length > 0) {
+          //   $('#span-checkout-block').attr('data-content', cookieProducts.length);
+          // }
         }
       });
     }

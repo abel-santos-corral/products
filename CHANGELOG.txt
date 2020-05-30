@@ -16,3 +16,4 @@ Products 8.x-1.0, 2020-05-21
                               Add in configuration form a section for cart block.
                               Add cart block that shows cart resumé and button
                               to proceed to checkout.
+                              Add number of elments by the cart image in block.

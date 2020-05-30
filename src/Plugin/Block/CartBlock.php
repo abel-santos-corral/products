@@ -56,7 +56,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
     // Image class data.
     $imgClass = $config->get('cart-block.img.class');
     if ($imgClass) {
-      $build['#img']['class'] = explode(",",$imgClass);
+      $build['#img']['class'] = replace(","," ",$imgClass);
     }
     // Image source data.
     $imgSrc = $config->get('cart-block.img.src');
@@ -82,7 +82,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
     // Button class data.
     $buttonClass = $config->get('cart-block.button.class');
     if ($buttonClass) {
-      $build['#button']['class'] = explode(",",$buttonClass);
+      $build['#button']['class'] = replace(","," ",$buttonClass);
     }
     // Button text data.
     $buttonText = $config->get('cart-block.button.width');

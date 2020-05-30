@@ -27,3 +27,25 @@ label.remove-product:hover {
   color: white;
   margin-left: 0px;
 }
+
+button.button-hidden {
+  display: none;
+}
+
+div.cart-block {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+button#button-checkout-block {
+  width: 50%;
+}
+
+#span-checkout-block::after {
+  content: attr(data-content);
+  color: red;
+  font-size: 2em;
+  position: relative;
+  bottom: 10px;
+}

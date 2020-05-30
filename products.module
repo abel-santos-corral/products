@@ -35,21 +35,14 @@ function products_theme() {
     'cart_block' => [
       'variables' => [
         'img' => [
-          'class' => [
-              'img-checkout-block',
-          ],
+          'class' => "img-checkout-block",
           'src' => $path,
           'alt' => 'Shopping cart',
           'height' => '40px',
           'width' => '40px',
         ],
         'button' => [
-          'class' => [
-              'button',
-              'buton-action',
-              'button--primary',
-              'button--small',
-          ],
+          'class' => "button buton-action button--primary button--small button-hidden",
           'text' => 'Proceed to checkout',
           'href' => 'products/cart',
         ],
