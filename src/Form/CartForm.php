@@ -26,8 +26,10 @@ class CartForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    drupal_set_message(time() . " - Pasa por buildForm");
     // Call service to obtain the products from cookie
     $products = \Drupal::service('products.cookie')->getCookie('products');
+    drupal_set_message(time() . " - Lleva : " . json_encode($products));
     // When products are retrieved, process them.
     if ($products) {
       // Rearrange the products array.
@@ -71,6 +73,11 @@ class CartForm extends FormBase {
           '#min' => 1,
           '#max' => 50,
           '#step' => 1,
+          '#attributes' => [
+            'unit-price' => $priceNode,
+            'offer-price' => $priceOfferNode,
+            'min-units' => $unitOfferNode,
+          ],
         ];
         $form['product-' . $productId]['eliminate-' . $productId] = [
           '#type' => 'button',
@@ -92,11 +99,6 @@ class CartForm extends FormBase {
             'wrapper' => 'product-' . $productId,
           ],
         ];
-        // $form['product-' . $productId]['product-data-' . $productId] = [
-        //   '#type' => 'hidden',
-        //   '#required' => TRUE,
-        //   '#value' => $productArray,
-        // ];
       }
     }
     else {

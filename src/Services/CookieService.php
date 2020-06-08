@@ -52,7 +52,7 @@ class CookieService implements CookieServiceInterface {
       return FALSE;
     }
     $response = new Response();
-    $cookie = new Cookie($name,join(",",$arrayProducts), 0, '/' , NULL, FALSE);
+    $cookie = new Cookie($name,join(",",$arrayProducts), 0, '/' , NULL, FALSE, FALSE);
     $response->headers->setCookie($cookie);
     $response->send();
   }

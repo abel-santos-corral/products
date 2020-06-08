@@ -17,3 +17,4 @@ Products 8.x-1.0, 2020-05-21
                               Add cart block that shows cart resumé and button
                               to proceed to checkout.
                               Add number of elments by the cart image in block.
+- (abel-santos) - 5/31/2020 - Add css to products view.               

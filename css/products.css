@@ -49,3 +49,19 @@ button#button-checkout-block {
   position: relative;
   bottom: 10px;
 }
+
+div.col-productos.col-1,
+div.col-productos.col-2,
+div.col-productos.col-3 {
+  background-color: DarkKhaki;
+  padding-top:5px;
+  padding-bottom:5px;
+  border-style:solid;
+  border-width:1px;
+  padding:5px;
+  margin-top:5px;
+  border-radius:5px;
+  margin-left: 5px;
+  width: 25% !important;
+  height: 350px;
+}
