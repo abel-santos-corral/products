@@ -15,3 +15,8 @@ products_block_styles:
   css:
     theme:
       css/products_block_styles.css: {}
+products_cartform_styles:
+    version: VERSION
+    css:
+      theme:
+        css/products_cartform_styles.css: {}

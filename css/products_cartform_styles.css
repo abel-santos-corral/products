@@ -1,0 +1,30 @@
+input[class*="js-form-submit"] {
+  height:  40px;
+  margin-top: 10px;
+}
+
+div.products-buttons-container,
+div[id*="form-item-number-items-"] {
+  display: flex;
+}
+
+div[class*="form-item-number-items-"],
+label[for^="edit-number-items-"] {
+  float: left;
+}
+
+label[for^="edit-number-items-"] {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+div[id^="product-"] {
+  padding-top:10px;
+  padding-bottom:10px;
+  border-style:solid;
+  border-width:1px;
+  padding:10px;
+  margin-top:5px;
+  border-radius:5px;
+  background-color:#d9edf7
+}
